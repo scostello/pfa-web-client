@@ -1,0 +1,33 @@
+:global(.frame) {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.8em;
+}
+
+:global(.axis-baseline) {
+  stroke: #ddd;
+}
+
+:global(.tick, .axis-tick path) {
+  stroke: #ddd;
+}
+
+:global(.tooltip-content) {
+  background: #fff;
+  position: relative;
+  border: 1px solid #ddd;
+  color: black;
+  padding: 10px;
+  z-index: 100;
+  transform: translateX(-50%) translateY(5px);
+  min-width: 120px;
+}
+
+:global(.uncertainty_cone) {
+  transform: none;
+  fill: #de4b8b;
+  fill-opacity: 0.2;
+}
+
+:global(circle.frame-hover) {
+  stroke: #aaa;
+}
