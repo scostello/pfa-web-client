@@ -6,7 +6,11 @@ const helpers = require('./webpack-helpers');
 
 module.exports = {
   mode: helpers.isProduction ? 'production' : 'development',
-  entry: ['babel-polyfill', path.resolve(helpers.appsPath, 'index.jsx')],
+  entry: [
+    'core-js/stable',
+    'regenerator-runtime/runtime',
+    path.resolve(helpers.appsPath, 'index.jsx'),
+  ],
   output: {
     filename: 'app-[hash].js',
     publicPath: '/',

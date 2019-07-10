@@ -2,7 +2,7 @@
 import { types, getEnv, flow } from 'mobx-state-tree';
 import gql from 'graphql-tag';
 import { api } from 'shared/services';
-import { Franchise } from './franchise';
+import { Franchise } from './domain/franchises/franchise';
 
 const franchisesQuery = gql`
   query fetchFranchises {
@@ -59,7 +59,7 @@ const fetchAs = self => flow(function* fetch(resource: string) {
   }
 });
 
-export const createAppStore = () => {
+export const createRootStore = () => {
   const root = types
     .model('RootStore', {
       franchises: types.array(Franchise),

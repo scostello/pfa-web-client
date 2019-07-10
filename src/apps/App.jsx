@@ -1,29 +1,38 @@
 // @flow
 import * as React from 'react';
 import makeInspectable from 'mobx-devtools-mst';
+import Loadable from 'react-loadable';
 import { Router } from 'react-router';
 import { Provider as MobXProvider } from 'mobx-react';
 import { createBrowserHistory } from 'history';
-import { createAppStore } from 'shared/stores';
+import { createRootStore } from 'shared/stores';
 import Layout from './common/Layout';
-import Dashboard from './dashboard';
-import Franchises from './franchises';
 
 const history = createBrowserHistory();
-const store = createAppStore();
+const store = createRootStore();
+
+const LoadableDashboard = Loadable({
+  loader: () => import('./dashboard'),
+  loading: () => <div>Loading...</div>,
+});
+
+const LoadableFranchises = Loadable({
+  loader: () => import('./franchises'),
+  loading: () => <div>Loading...</div>,
+});
 
 const menuItems = [
   {
     key: 'dashboard',
     label: 'Dashboard',
     href: '/',
-    content: Dashboard,
+    content: LoadableDashboard,
   },
   {
     key: 'teams',
     label: 'Teams',
     href: '/teams',
-    content: Franchises,
+    content: LoadableFranchises,
   },
   {
     key: 'players',
