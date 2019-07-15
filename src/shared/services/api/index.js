@@ -11,7 +11,7 @@ import { getMainDefinition } from 'apollo-utilities';
  * Setting the hostname of our api gateway
  * @type {string|string}
  */
-const apiHost = process.env.API_HOST || 'api.pfa.test';
+const apiHost = process.env.API_HOST || 'localhost:4000';
 
 /**
  * Handles GraphQL errors. For now, spits out the error into the console.

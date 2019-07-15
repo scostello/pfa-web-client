@@ -5,11 +5,11 @@ import Loadable from 'react-loadable';
 import { Router } from 'react-router';
 import { Provider as MobXProvider } from 'mobx-react';
 import { createBrowserHistory } from 'history';
-import { createRootStore } from 'shared/stores';
+import createStores from 'shared/stores';
 import Layout from './common/Layout';
 
 const history = createBrowserHistory();
-const store = createRootStore();
+const { app, domain } = createStores();
 
 const LoadableDashboard = Loadable({
   loader: () => import('./dashboard'),
@@ -52,10 +52,10 @@ const menuItems = [
 // Dev Tools Setup
 // ========================================================
 
-if (process.env.NODE_ENV === 'development') makeInspectable(store);
+if (process.env.NODE_ENV === 'development') makeInspectable(domain);
 
 export default () => (
-  <MobXProvider store={store}>
+  <MobXProvider store={domain}>
     <Router history={history}>
       <Layout menuItems={menuItems} />
     </Router>
